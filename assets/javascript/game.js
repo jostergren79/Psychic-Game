@@ -1,50 +1,39 @@
-// variables defined //--------------------------------//
+//--------------------------------//initial variable layout//--------------------------------//
 
 const letters = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
 
-let win =0;
-let loss =0;
-let playerWin = document.getElementById("playerWins")
-let playerLose = document.getElementById("playerLoses")
-let guessesLeft = document.getElementById("remainingGuesses")
-let guessed = document.getElementById("guessedAlready")
+let win = 0;
+let loss = 0;
+let tries = 9;
 
-//--------------------------------////--------------------------------//
+const winsText = document.getElementById("playerWins")
+const lossesText = document.getElementById("playerLoses")
+const triesText = document.getElementById("remainingGuesses")
+const lettersText = document.getElementById("guessedAlready")
 
-// this function waits for a key to be pressed by the player then returns that key as the playerGuess variable
+//--------------------------------//initial layout of onkeyupfunction layout//--------------------------------//
 
 document.onkeyup = function(event) {
-const playerGuess = event.key;
-}
-
-// this function works to establish the computers guess at random from the letters array compares it to the userGuess and if they match adds 1 to win, if not adds 1 to loss.
-
-let computerGuess = letters[Math.floor(Math.random() * letters.length)];
     
-if ((playerGuess === computerGuess)) {
-    win++;
-    playerWin.textContent = win;
+const playerGuess = event.key;
+let computerGuess = letters[Math.floor(Math.random() * letters.length)]; 
+let tries = (tries - 1);
+    
+if (playerGuess === computerGuess) {
+
+    winsText.textContent = "Wins:" (win + 1);
 } 
 
-else {
-    loss++;
-    playerLose.textContent = loss;
+if (playerGuess !== computerGuess) {
+
+    lossesText.textContent = "Losses: " + (loss - 1);
+}
 }
 
+//--------------------------------//initial update element textContent function layout//--------------------------------//
 
-// this function publishes the number of guesses left to the page//--------------------------------//
-
-
-
-// this function publishes past guesses to the page//--------------------------------//
-
-
-
-
-//--------------------------------////--------------------------------//
-
-
-
+triesText.textContent = "Guesses Left: " + tries;
+lettersText.textContent = "Your Guesses So Far: " + playerGuess;
 
 
 
